@@ -12,18 +12,31 @@ pipeline:
   stages:
     - stage:
         identifier: build
-        name: build
+        name: Test
         spec:
           cloneCodebase: true
           execution:
             steps:
-              - step:
-                  identifier: npminstall
-                  name: npm_install
-                  spec:
-                    command: npm install
-                  timeout: ""
-                  type: Run
+              - parallel:
+                  - step:
+                      identifier: npminstall
+                      name: npm_install
+                      spec:
+                        command: npm install
+                      timeout: ""
+                      type: Run
+                  - step:
+                      type: Run
+                      name: Redefine
+                      identifier: Redefine
+                      spec:
+                        shell: Sh
+                        command: |-
+                          echo $HARNESS_BUILD_ID
+                          echo $HARNESS_EXECUTION_ID
+                          ehco $HARNESS_PIPELINE_ID
+                          echo $HARNESS_PROJECT_ID
+                          echo $HARNESS_STAGE_ID
               - step:
                   identifier: npmtest
                   name: npm_test
@@ -32,9 +45,13 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
+            type: Docker
             spec: {}
-            type: Cloud
+          caching:
+            enabled: false
+            paths: []
         type: CI
+        description: ""
