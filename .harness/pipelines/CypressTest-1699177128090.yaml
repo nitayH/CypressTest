@@ -1,0 +1,40 @@
+pipeline:
+  identifier: Build_CypressTest_1699177131169
+  name: Build CypressTest
+  orgIdentifier: default
+  projectIdentifier: CypressTest
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.Github_OAuth_1699177121032
+        repoName: CypressTest
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: npminstall
+                  name: npm_install
+                  spec:
+                    command: npm install
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: npmtest
+                  name: npm_test
+                  spec:
+                    command: npm run test
+                  timeout: ""
+                  type: Run
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
