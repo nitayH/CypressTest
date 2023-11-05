@@ -10,6 +10,7 @@ before(() => {
 });
 
 describe("basic suite test", () => {
+    // this is a comment
     it("first test not failing", () => {
         expect(true).to.equal(true);
         cy.wait(1000);
