@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_CypressTest_1699177131169-push-trigger-input-set
+  identifier: Build_CypressTest_1699177131169pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: CypressTest
+  pipeline:
+    identifier: Build_CypressTest_1699177131169
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
