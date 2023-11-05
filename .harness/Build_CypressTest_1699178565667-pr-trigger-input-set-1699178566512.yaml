@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_CypressTest_1699178565667-pr-trigger-input-set
+  identifier: Build_CypressTest_1699178565667prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: CypressTest1
+  pipeline:
+    identifier: Build_CypressTest_1699178565667
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
