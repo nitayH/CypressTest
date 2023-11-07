@@ -1,9 +1,8 @@
 
 describe("another suite test", () => {
 
-    it("test should pass", () => {
+    it("test 6 - pass", () => {
         expect(true).to.equal(true);
-        cy.wait(1000);
     });
 
     }
